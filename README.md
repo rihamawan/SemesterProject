@@ -1,3 +1,3 @@
 # SemProject
 UML:
-![UML](https://github.com/user-attachments/assets/0bde2598-ea44-4d2b-bf27-8694df870bfc)
+![UML](https://github.com/user-attachments/assets/fae6c29d-8774-4da3-be3b-7f00a442eb9c)
