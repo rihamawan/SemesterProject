@@ -42,6 +42,37 @@ The game follows a component-based architecture with these core systems:
 - Projectile motion with gravity (9.8 m/s²)  
 - Wind force affecting trajectory  
 - Collision detection
+
+### Technical Specifications
+
+| Component          | Implementation                              |
+|--------------------|--------------------------------------------|
+| Integration Method | Semi-Implicit Euler                        |
+| Timestep           | Frame-rate independent (uses Δt)           |
+| Coordinate System  | Right-handed (Y-up)                        |
+| Units              | Meters, seconds, newtons                   |
+| Error Handling     | Throws PhysicsException on invalid states  |
+
+### Simulation Pipeline
+
+1. **Initialization**  
+   - Convert player angle/power to velocity vector  
+2. **Per-Frame Update**  
+   - Apply wind and gravity forces  
+   - Update position using current velocity  
+3. **Collision Phase**  
+   - Check against targets/obstacles  
+   - Resolve collisions if detected  
+
+> **Note**: Wind effects are cumulative with gravity, creating realistic parabolic trajectories.
+The physics engine uses realistic Newtonian mechanics to simulate projectile motion:
+
+```cpp
+// Core equation: F = ma (simplified to velocity changes)
+velocity.x += wind.x * deltaTime;
+velocity.y += (gravity + wind.y) * deltaTime;
+position += velocity * deltaTime;
+```
  ## 🎮 How to Play
 
 ### Basic Controls
