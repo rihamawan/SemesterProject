@@ -40,7 +40,7 @@ public:
 	MyString concat(const MyString& s2) const;
 	MyString& append(const MyString& s2);
 	//MyString operator+(const MyString& s2) const;
-	float toFloat() const
+	float toFloat() const;
 
 	MyString& operator+=(const MyString& s2);
 	int find_first(char ch) const;

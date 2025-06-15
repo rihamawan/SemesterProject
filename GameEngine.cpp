@@ -1,7 +1,9 @@
 #include "GameEngine.h"
 #include <iostream>
 using namespace std;
-GameEngine::GameEngine(const MyString& levelPath, const MyString& saveFilePath, const MyString& logFilePath) : logger(logFilePath), levelManager(levelPath, logger), stateManager(saveFilePath){}
+GameEngine::GameEngine(const MyString& levelPath, const MyString& saveFilePath,
+    const MyString& logFilePath) : logger(logFilePath), levelManager(/*levelPath,*/ logger),
+    stateManager(saveFilePath){}
 
 void GameEngine::init() {
     players.clear();
@@ -109,6 +111,20 @@ int GameEngine::getCurrentLevelNumber() const {
 
 void GameEngine::loadLevel(int levelNumber) {
     levelManager.loadLevel(levelNumber, level);
+}
+
+
+
+Player& GameEngine::getPlayer(int index) {
+    return players[index];
+}
+
+int GameEngine::getPlayerCount() const {
+    return players.size();
+}
+
+void GameEngine::addPlayer(const Player& player) {
+    players.push(player);
 }
 
 Dynamic_array<Player>& GameEngine::getPlayers() { return players; }

@@ -28,3 +28,11 @@ bool Level::isCompleted() const {
     }
     return true;
 }
+
+void Level::draw() const {
+    for (int i = 0; i < targets.size(); ++i)
+        targets[i]->draw();
+
+    for (int i = 0; i < obstacles.size(); ++i)
+        obstacles[i]->draw();
+}

@@ -4,10 +4,10 @@
 #include "Target.h"
 class StaticTarget : public Target {
 public:
-    StaticTarget(const XYCoord& pos, float w, float h);
-    void update(float dt) override;              
-    bool checkHit(const Projectile& p) override;  
-
+	StaticTarget(const XYCoord& pos, float w, float h);
+	void update(float dt) override;
+	bool checkHit(const XYCoord& pos, float radius) const;
+	void draw() const override;
 };
 #endif 
 

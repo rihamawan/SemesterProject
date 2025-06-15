@@ -16,7 +16,9 @@ public:
     int getCurrentLevelNumber() const;
     // (Re)load the given level number
     void loadLevel(int levelNumber);
-
+    Player& getPlayer(int index);
+    int getPlayerCount() const;
+    void addPlayer(const Player& player);
     Dynamic_array<Player>& getPlayers();
     const Dynamic_array<Player>& getPlayers() const;
 

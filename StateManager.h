@@ -10,7 +10,7 @@ public:
     explicit StateManager(const MyString& filePath);
 
     void save(const GameEngine& engine);
-    void load(const GameEngine& engine);
+    void load( GameEngine& engine);
 
 private:
     MyString saveFilePath;

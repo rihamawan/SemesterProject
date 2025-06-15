@@ -1,5 +1,6 @@
 #ifndef DYNAMICARRAY_H
 #define DYNAMICARRAY_H
+#pragma once
 template <typename T>
 class Dynamic_array {
 private:
@@ -51,7 +52,6 @@ public:
 
     T& front(); // Returns first element
     const T& front() const;
-
     T& back(); // Returns last element
     const T& back() const;
 
@@ -63,7 +63,7 @@ template <typename T>
 void Dynamic_array<T>::double_capacity() {
     cap = cap * 2;
     T* newArr = new T[cap];
-    for (int i = 0; i < cap; i++) {
+    for (int i = 0; i < len; i++) {
         newArr[i] = arr[i];
     }
     delete[] arr;
@@ -74,6 +74,7 @@ template <typename T>
 Dynamic_array<T>::Dynamic_array() :len(0), cap(1) {
     arr = new T[cap];
 }
+
 template <typename T>
 Dynamic_array<T>::Dynamic_array(int count, T value) {
     cap = count + 1;
@@ -97,6 +98,7 @@ Dynamic_array<T>::~Dynamic_array() {
     len = 0;
     cap = 0;
     arr = nullptr;
+
 }
 template <typename T>
 Dynamic_array<T>& Dynamic_array<T>:: operator=(const Dynamic_array<T>& other) {
@@ -119,6 +121,7 @@ template <typename T>
 const T& Dynamic_array<T>::operator[](int index) const {
     return arr[index];
 }
+
 template <typename T>
 bool Dynamic_array<T>:: operator==(const Dynamic_array<T>& other) const {
     if (len != other.len)

@@ -14,4 +14,6 @@ bool RectangularObstacle::checkCollision(const Projectile& p) {
     return (dx * dx + dy * dy) <= (r * r);
 }
 
-void RectangularObstacle::draw() const {}
+void RectangularObstacle::draw() const {
+    DrawRectangle((int)position.x, (int)position.y, (int)width, (int)height, GRAY);
+}

@@ -70,6 +70,14 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>C:\Users\riham\source\repos\SEM2-PROJECTS\OOP\SemProject\include;C:\Users\riham\raylib-5.5_win64_msvc16\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\riham\source\repos\SEM2-PROJECTS\OOP\SemProject\lib;C:\Users\riham\raylib-5.5_win64_msvc16\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>C:\Users\riham\raylib-5.5_win64_msvc16\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>C:\Users\riham\raylib-5.5_win64_msvc16\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -108,6 +116,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>raylib.lib;opengl32.lib;gdi32.lib;winmm.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -128,6 +137,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CircularObstacle.cpp" />
+    <ClCompile Include="DestructionEffect.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelManager.cpp" />
@@ -144,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CircularObstacle.h" />
+    <ClInclude Include="DestructionEffect.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GameException.h" />
     <ClInclude Include="Level.h" />
@@ -167,6 +178,8 @@
     <Text Include="level3.txt" />
     <Text Include="level4.txt" />
     <Text Include="level5.txt" />
+    <Text Include="logger.txt" />
+    <Text Include="savedState.bin" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

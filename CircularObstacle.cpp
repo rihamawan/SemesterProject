@@ -11,5 +11,6 @@ bool CircularObstacle::checkCollision(const Projectile& p) {
 }
 
 void CircularObstacle::draw() const {
-
+    DrawCircle((int)(position.x), (int)(position.y),
+        radius, DARKGRAY);
 }

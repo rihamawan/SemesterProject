@@ -2,6 +2,7 @@
 #define OBSTACLE_H
 #include "XYCoord.h"
 #include "Projectile.h"
+#include "raylib.h"
 class Obstacle {
 public:
     Obstacle(const XYCoord& pos) :position(pos) {}

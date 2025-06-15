@@ -57,6 +57,9 @@
     <ClCompile Include="GameEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DestructionEffect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyVector.h">
@@ -110,6 +113,9 @@
     <ClInclude Include="GameEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DestructionEffect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="level1.txt" />
@@ -117,5 +123,7 @@
     <Text Include="level3.txt" />
     <Text Include="level4.txt" />
     <Text Include="level5.txt" />
+    <Text Include="logger.txt" />
+    <Text Include="savedState.bin" />
   </ItemGroup>
 </Project>

@@ -13,17 +13,21 @@ MyString LevelManager::buildFilePath(int levelNumber) const {
 
 void LevelManager::loadLevel(int levelNumber, Level& level) {
     MyString path = buildFilePath(levelNumber);
-    ifstream in(path.returnArray());
-    logger.logError(MyString("Cannot open level file: ").concat(path));
-    throw FileIOException(MyString("Cannot open level file: ").concat(path));
+    std::ifstream in(path.returnArray());
 
+    if (!in) {
+        logger.logError(MyString("Cannot open level file: ").concat(path));
+        throw FileIOException(MyString("Cannot open level file: ").concat(path));
+    }
+
+    // Wind
     float wx, wy;
     in >> wx >> wy;
     level.setWind(XYCoord(wx, wy));
 
+    // Targets
     int targetCount;
     in >> targetCount;
-
     for (int i = 0; i < targetCount; ++i) {
         float x, y, w, h;
         int isMoving;
@@ -32,16 +36,16 @@ void LevelManager::loadLevel(int levelNumber, Level& level) {
         if (isMoving) {
             float dirX, dirY, speed;
             in >> dirX >> dirY >> speed;
-            level.addTarget(new MovingTarget(XYCoord(x, y), w, h, speed,XYCoord(dirX,dirY)));
+            level.addTarget(new MovingTarget(XYCoord(x, y), w, h, speed, XYCoord(dirX, dirY)));
         }
         else {
             level.addTarget(new StaticTarget(XYCoord(x, y), w, h));
         }
     }
 
+    // Obstacles
     int obstacleCount;
     in >> obstacleCount;
-
     for (int i = 0; i < obstacleCount; ++i) {
         float x, y;
         int type;

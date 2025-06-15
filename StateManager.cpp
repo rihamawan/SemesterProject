@@ -44,7 +44,7 @@ void StateManager::save(const GameEngine& engine) {
     }
 }
 
-void StateManager::load(const GameEngine& engine) {
+void StateManager::load( GameEngine& engine) {
     ifstream in(saveFilePath.returnArray(), ios::binary);
     if (!in) {
         throw FileIOException(MyString("Cannot open save file: ").concat(saveFilePath));
@@ -61,7 +61,7 @@ void StateManager::load(const GameEngine& engine) {
     in.read((char*)&ps, sizeof(ps));
     if (!in) throw ConfigParseException("Failed reading player count");
 
-    Dynamic_array<Player> players = engine.getPlayers();
+    Dynamic_array<Player>& players = engine.getPlayers();
     players.clear();
     for (int i = 0; i < ps; ++i) {
         int len;
@@ -100,7 +100,7 @@ void StateManager::load(const GameEngine& engine) {
     in.read((char*)&ts, sizeof(ts));
     if (!in) throw ConfigParseException("Failed reading target count");
 
-    Dynamic_array<Target*> targets = engine.getLevel().getTargets();
+   const Dynamic_array<Target*>& targets = engine.getLevel().getTargets();
     for (int i = 0; i < ts && i < targets.size(); ++i) {
         bool d;
         in.read((char*)&d, sizeof(d));

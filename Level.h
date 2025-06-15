@@ -22,6 +22,10 @@ public:
 	const Dynamic_array<Target*>& getTargets() const { return targets; }
 	XYCoord getWind() const { return wind; }
 	int getLevelNumber() const { return levelNumber; }
+	int getTargetCount() const { return targets.size(); }
+	Target* getTarget(int index) const { return targets[index]; }
+
+	void draw() const;
 private:
 	int                   levelNumber;
 	Dynamic_array<Target*>     targets;
